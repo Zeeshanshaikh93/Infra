@@ -15,3 +15,9 @@ variable "vpc-cidr" {
   default     = "10.0.0.0/16"
   description = "Cidr range for vpc"
 }
+
+variable "subnet_names" {
+    type = list(string)
+    default = [ "web-1", "web-2", "app-1", "app-2" ]
+    description = "Names of subnets"
+}
