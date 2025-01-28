@@ -107,8 +107,8 @@ variable "web_security_group" {
     description = optional(string, "This security group is for web servers")
     rules = list(object({
       cidr_ipv4   = optional(string, "0.0.0.0/0")
-      from_port   = optional(number, 80)
-      to_port     = optional(number, 80)
+      from_port   = number
+      to_port     = number
       ip_protocol = optional(string, "tcp")
     }))
   })
@@ -121,8 +121,8 @@ variable "app_security_group" {
     description = optional(string, "This security group is for application servers")
     rules = list(object({
       cidr_ipv4   = optional(string, "0.0.0.0/0")
-      from_port   = optional(number, 8080)
-      to_port     = optional(number, 8080)
+      from_port   = number
+      to_port     = number
       ip_protocol = optional(string, "tcp")
     }))
   })
