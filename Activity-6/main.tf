@@ -99,7 +99,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_route_table" "private" {
-  count  = local.private_subnets_count
+  count  = local.private_subnets_count != 0 ? 1 : 0
   vpc_id = aws_vpc.base.id
   tags = {
     Name = "${var.network_label}-Private-RT"
@@ -108,7 +108,7 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_route_table" "public" {
-  count  = local.public_subnets_count
+  count  = local.public_subnets_count != 0 ? 1 : 0
   vpc_id = aws_vpc.base.id
   tags = {
     Name = "${var.network_label}-Public-RT"
@@ -141,13 +141,13 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_route_table_association" "private" {
-  count          = local.private_subnets_count > 0 ? local.private_subnets_count : 0
+  count          = local.private_subnets_count 
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private[0].id
 }
 
 resource "aws_route_table_association" "public" {
-  count          = local.public_subnets_count > 0 ? local.public_subnets_count : 0
+  count          = local.public_subnets_count 
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public[0].id
 }
