@@ -1,70 +1,3 @@
-# variable "region" {
-#   type        = string
-#   description = "Region"
-#   default     = "ap-south-1"
-# }
-
-# variable "vpc_cidr" {
-#   type        = string
-#   description = "vpc cidr"
-# }
-
-# variable "network_label" {
-#   type        = string
-#   description = "Name of the Network"
-#   default     = "Ntier"
-# }
-
-# variable "public_subnets" {
-#   type = list(object({
-#     name              = string
-#     cidr              = string
-#     availability_zone = string
-#   }))
-#   description = "Public Subnets"
-# }
-
-# variable "private_subnets" {
-#   type = list(object({
-#     name              = string
-#     cidr              = string
-#     availability_zone = string
-#   }))
-#   description = "Private Subnets"
-# }
-
-# variable "web_security_group" {
-#   type = object({
-#     name        = optional(string, "web_sg")
-#     description = optional(string, "This security group is for web server")
-#     rules = list(object({
-#       cidr_ipv4   = optional(string, "0.0.0.0/0")
-#       from_port   = number
-#       to_port     = number
-#       ip_protocol = optional(string, "tcp")
-#       }
-#     ))
-#   })
-#   description = "This is a web secruity group"
-# }
-
-# variable "app_security_group" {
-#   type = object({
-#     name        = optional(string, "app_sg")
-#     description = optional(string, "This security group is for app server")
-#     rules = list(object({
-#       cidr_ipv4   = optional(string, "0.0.0.0/0")
-#       from_port   = number
-#       to_port     = number
-#       ip_protocol = optional(string, "tcp")
-#       }
-#     ))
-#   })
-#   description = "This is a app secruity group"
-# }
-
-
-
 variable "region" {
   type        = string
   description = "AWS region"
@@ -127,4 +60,23 @@ variable "app_security_group" {
     }))
   })
   description = "This is an application security group"
+}
+
+variable "key_file_details" {
+  type = object({
+    name             = string
+    public_key_path  = optional(string, "~/.ssh/id_ed25519.pub")
+    private_key_path = optional(string, "~/.ssh/id_ed25519")
+  })
+}
+
+variable "web_server_info" {
+  type = object({
+    name                        = string
+    ami                         = optional(string, "ami-00bb6a80f01f03502")
+    instance_type               = optional(string, "t2.micro")
+    associate_public_ip = optional(bool, true)
+    username                    = optional(string, "ubuntu")
+
+  })
 }
