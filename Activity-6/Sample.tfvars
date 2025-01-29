@@ -65,7 +65,8 @@ key_file_details = {
 }
 
 web_server_info = {
-  name          = "terraform-ec2"
-  ami           = "ami-00bb6a80f01f03502"
+  name       = "terraform-ec2"
+  ami_filter = {}
+  # ami           = "ami-00bb6a80f01f03502"
   instance_type = "t2.micro"
 }

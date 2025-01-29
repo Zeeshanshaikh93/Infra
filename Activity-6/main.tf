@@ -7,6 +7,8 @@
 # # Create subnets for private and associate with private route table
 # # # create security groups
 # importing a key pair (Public)
+# Create an ec2 Instance
+# Create a datasoruce          "It acts like an information about resources that already exists in cloud environment (Fetching the details)"
 
 
 resource "aws_vpc" "base" {

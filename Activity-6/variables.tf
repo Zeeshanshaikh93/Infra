@@ -72,11 +72,16 @@ variable "key_file_details" {
 
 variable "web_server_info" {
   type = object({
-    name                        = string
-    ami                         = optional(string, "ami-00bb6a80f01f03502")
-    instance_type               = optional(string, "t2.micro")
+    #name                        = string
+    #ami                         = optional(string, "ami-00bb6a80f01f03502")
+    name = string
+    ami_filter = object({
+      name  = optional(string, "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*")
+      owner = optional(string, "099720109477")
+    })
+    instance_type       = optional(string, "t2.micro")
     associate_public_ip = optional(bool, true)
-    username                    = optional(string, "ubuntu")
+    username            = optional(string, "ubuntu")
 
   })
 }
