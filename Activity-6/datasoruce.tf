@@ -9,5 +9,5 @@ data "aws_ami" "webimage" {
     values = [var.web_server_info.ami_filter.name]
   }
 
-  owners = [var.web_server_info.ami_filter.owner] # Canonical
+  owners = [var.web_server_info.ami_filter.owner] # Canonical is a reference to standard practices and guidelines that help users write effective and maintainable infrastructure code.
 }
