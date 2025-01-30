@@ -11,6 +11,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [
     aws_security_group.web_sg.id
   ]
+  user_data = file("install.sh")
   depends_on = [aws_subnet.public,
     aws_security_group.web_sg,
     aws_key_pair.base,

@@ -40,8 +40,8 @@ web_security_group = {
     },
     {
       cidr_ipv4   = "0.0.0.0/0"
-      from_port   = 5000
-      to_port     = 5000
+      from_port   = 80
+      to_port     = 80
       ip_protocol = "tcp"
     }
   ]
