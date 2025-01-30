@@ -85,3 +85,8 @@ variable "web_server_info" {
 
   })
 }
+
+variable "build_id" {
+  type    = string
+  default = ""
+}

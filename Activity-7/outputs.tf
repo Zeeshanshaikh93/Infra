@@ -1,5 +1,5 @@
 output "web_url" {
-  value = format("http://%s", aws_instance.web.public_ip)
+  value = format("http://%s/woody", aws_instance.web.public_ip)
 
 }
 
