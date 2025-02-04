@@ -70,3 +70,10 @@ web_server_info = {
   # ami           = "ami-00bb6a80f01f03502"
   instance_type = "t2.micro"
 }
+
+
+
+# {}: Represents an empty object or map.
+# Used in resource definitions to indicate no parameters.
+# Useful for initializing variables that will be populated later.
+# Be cautious about escaping when using curly braces in strings to avoid unintended interpolation.
